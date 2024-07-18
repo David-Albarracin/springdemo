@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customer Form</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1 th:text="${customer.customerId != null} ? 'Edit Customer' : 'Create Customer'">Customer Form</h1>
+        <form th:action="@{${customer.customerId != null} ? '/customers/' + ${customer.customerId} : '/customers'}" th:object="${customer}" method="post">
+            <div class="mb-3">
+                <label for="firstName" class="form-label">First Name:</label>
+                <input type="text" id="firstName" class="form-control" th:field="*{firstName}" />
+            </div>
+            <div class="mb-3">
+                <label for="lastName" class="form-label">Last Name:</label>
+                <input type="text" id="lastName" class="form-control" th:field="*{lastName}" />
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email:</label>
+                <input type="text" id="email" class="form-control" th:field="*{email}" />
+            </div>
+            <div class="mb-3">
+                <label for="phoneNumber" class="form-label">Phone Number:</label>
+                <input type="text" id="phoneNumber" class="form-control" th:field="*{phoneNumber}" />
+            </div>
+            <div class="mb-3">
+                <label for="legalId" class="form-label">Legal ID:</label>
+                <input type="text" id="legalId" class="form-control" th:field="*{legalId}" />
+            </div>
+            <div class="mb-3">
+                <label for="legalIdType" class="form-label">Legal ID Type:</label>
+                <input type="text" id="legalIdType" class="form-control" th:field="*{legalIdType}" />
+            </div>
+            <div class="mb-3">
+                <label for="phoneNumberPrefix" class="form-label">Phone Number Prefix:</label>
+                <input type="text" id="phoneNumberPrefix" class="form-control" th:field="*{phoneNumberPrefix}" />
+            </div>
+            <button type="submit" class="btn btn-primary" th:text="${customer.customerId != null} ? 'Update' : 'Create'">Create</button>
+        </form>
+        <a th:href="@{/customers}" class="btn btn-secondary mt-2">Back to List</a>
+    </div>
+</body>
+</html>

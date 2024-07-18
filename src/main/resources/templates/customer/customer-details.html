@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customer Details</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+</head>
+<body>
+    <div class="container">
+        <h1>Customer Details</h1>
+        <div class="card">
+            <div class="card-body">
+                <p class="card-text"><strong>First Name:</strong> <span th:text="${customer.firstName}">First Name</span></p>
+                <p class="card-text"><strong>Last Name:</strong> <span th:text="${customer.lastName}">Last Name</span></p>
+                <p class="card-text"><strong>Email:</strong> <span th:text="${customer.email}">Email</span></p>
+            </div>
+        </div>
+        <a th:href="@{/customers}" class="btn btn-secondary mt-3">Back to List</a>
+    </div>
+</body>
+</html>

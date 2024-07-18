@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Customers</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Customers</h1>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="customer : ${customers}">
+                    <td th:text="${customer.firstName}">First Name</td>
+                    <td th:text="${customer.lastName}">Last Name</td>
+                    <td th:text="${customer.email}">Email</td>
+                    <td>
+                        <a th:href="@{/customers/{id}(id=${customer.customerId})}" class="btn btn-primary">View</a>
+                        <a th:href="@{/customers/edit/{id}(id=${customer.customerId})}" class="btn btn-info">Edit</a>
+                        <a th:href="@{/customers/delete/{id}(id=${customer.customerId})}" class="btn btn-danger">Delete</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <a th:href="@{/customers/new}" class="btn btn-success">Create New Customer</a>
+    </div>
+    <script th:href="@{/js/bootstrap.min.js}"></script>
+</body>
+</html>
